@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>⚡ petir Ban Generator ⚡</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: url('https://files.catbox.moe/825adh.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: white;
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeSlide 1.2s ease-out;
+}
+
+.snow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: url('https://i.ibb.co/S0kY9n6/snow2.gif'); /* Gambar salju transparan */
+  background-size: cover;
+  opacity: 0.5;
+  z-index: 9999;
+}
+
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+  font-size: 2.2rem;
+  color: #c77dff;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 10px;
+  text-shadow: 0 0 15px #c77dff;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: #e0b3ff;
+  margin-bottom: 20px;
+  text-align: center;
+  text-shadow: 0 0 5px #d28eff;
+}
+
+.form-container {
+  background: rgba(30, 0, 50, 0.5);
+  border-radius: 15px;
+  padding: 25px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 0 20px rgba(180, 100, 255, 0.3);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(200, 100, 255, 0.2);
+  animation: fadeSlide 1.6s ease-out;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #f0d5ff;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  margin-bottom: 15px;
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+  border-bottom: 2px solid #d28eff;
+  font-size: 0.95rem;
+}
+
+input::placeholder {
+  color: #ccc;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(to right, #b74fff, #5e00a3);
+  color: white;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+  box-shadow: 0 0 12px #c77dff;
+  transition: transform 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.03);
+}
+
+.output-box {
+  margin-top: 15px;
+  padding: 12px;
+  background: rgba(60, 0, 80, 0.3);
+  border-radius: 10px;
+  border: 1px solid #d28eff;
+  color: white;
+  font-family: monospace;
+  white-space: pre-wrap;
+  cursor: pointer;
+  position: relative;
+  min-height: 80px;
+  user-select: text;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.copied {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 0.8rem;
+  color: #ffb3ff;
+  animation: fadeOut 1.5s forwards;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.note {
+  margin: 10px 0;
+  font-size: 0.85rem;
+  color: #e0b3ff;
+  text-align: center;
+  user-select: none;
+  white-space: pre-line;
+}
+  </style>
+</head>
+<body>
+  <div class="login-container" id="loginContainer">
+    <h1>Login Dulu 🔐</h1>
+    <input type="text" id="loginUser" placeholder="Username">
+    <input type="password" id="loginPass" placeholder="Password">
+    <button onclick="login()">Login</button>
+    <div class="note" id="loginNote">Gunakan akun terdaftar</div>
+  </div>
+
+  <!-- Yang sebelumnya sudah ada -->
+  <h1 style="display:none;" id="mainTitle">🔗 Vortex Crate Txt Banindo V2 🔗</h1>
+  <p class="subtitle" style="display:none;" id="mainSub">🚀 Isi method untuk generate teks banned WhatsApp</p>
+  <div class="form-container" id="formContainer" style="display:none;">
+    <label for="type">Method:</label>
+    <input type="text" id="type" placeholder="contoh: v1, v2, v3, v4" />
+    <div class="note">
+      NOTE: V2 JUR MANTAP NICH<br>
+      METHOD GAK WORK? LAPOR ADMIN<br>
+      @GanzzStore
+    </div>
+    <button onclick="generate()">Generate</button>
+    <div class="output-box" id="output" onclick="copyText()">Klik Generate untuk mulai</div>
+  </div>
+  
+  <script>
+    const texts = {
+      v1: [
+        `[สวัสดีครับ แนะนำตัวก่อนนะครับ ผมชื่อคิวโร มาจากประเทศสเปน🇪🇸 ผมอยากแนะนำลิงก์สล็อตที่รับประกันการจ่าย 100% โดยไม่มีค่าธรรมเนียมใด ๆ เลย รีบสมัครเลยนะครับ กดลิงก์ 🔗 ด้านล่างเพื่อสมัครได้ทันที
+
+https://www.rajabuaya89.ceo/mobile
+
+Exclusivo para nuevos usuarios de nivel bronce: depósito de solo 💲25 y retiro de hasta 💲950🔥🤑 ¡Regístrate ahora mismo solo en RAJABUAYA89🔥🀄🤑 EL MEJOR👍💯]`
+      ],
+      v2: [
+        `[🙋 Olá, amigos, meu nome é Cicitzy e sou o administrador do caça-níquel TOTO919. Este caça-níquel realmente garante lucros e ganhos, então você pode ganhar milhões de dólares. 🎁🔥
+
+🔥 💯 Garanto 100% que você não se arrependerá de jogar este caça-níquel. 🎰 Porque milhões de pessoas já enriqueceram. 💰💵
+
+💸💵 Se você quiser se registrar, clique no link abaixo ⬇🎁
+https://share.google/OIuq75xyWQzPaYB3J
+
+🔥💰 Ajude a compartilhar este caça-níquel com seus amigos ou com seu grupo do WhatsApp. 🎁🔥
+
+🎰 Este caça-níquel é 100% oficial do WhatsApp. Se sua conta for denunciada na conta oficial do WhatsApp ou na conta não oficial do WhatsApp na Play Store, seu número não será bloqueado/banido pelo WhatsApp. 🤩🔥
+
+✅🔥 Não se preocupe com o bloqueio/banimento do seu número pelo WhatsApp. Isso é 100% oficial. 💯🔥]`
+      ],
+      v3: [
+        `[Juega hoy en la página de Gacor 🎰 Capital $20 💰🤑
+Gana $50 💰🤑
+Paga tu deuda en KLIK88 👇👇
+LINK DE REGISTRO 👇👇
+LINK DE INICIO DE SESIÓN 👉 https://klik88army.shop
+Visita la página de Gacor hoy y gana el gran premio 🎁 de $30 💰🤑 ¡No te pierdas el momento Gacor! 🔥🔥]`
+      ],
+      v4: [
+        `[Olá 👋Eu sou o Cello Play 🎰 🀄 Meu site oferece bônus de $10 e $50 🤑🔥
+LINK DO SITE 👇👇
+"Site de Jogo Online Maxwin Easy | Agente Oficial de Futebol | INDO78" https://indospesial.site/daftar?ref=Vinna&utm_medium=social&utm_source=heylink.me
+Jogue até ganhar $70 🤑🔥
+#SiteDeSlots
+#SiteGacor
+#Cello]`
+      ]
+    };
+
+    const typeIndex = {
+      v1: 0,
+      v2: 0,
+      v3: 0,
+      v4: 0
+    };
+
+    let lastGeneratedMessage = '';
+
+const users = [
+  { username: "admin", password: "admin123" },
+  { username: "ganzz", password: "ganzzx7" },
+  { username: "user1", password: "test123" }
+];
+
+function login() {
+  const u = document.getElementById("loginUser").value.trim();
+  const p = document.getElementById("loginPass").value.trim();
+  const note = document.getElementById("loginNote");
+
+  const found = users.find(user => user.username === u && user.password === p);
+
+  if (found) {
+    // Hide login form
+    document.getElementById("loginContainer").style.display = "none";
+    // Show main generator
+    document.getElementById("mainTitle").style.display = "block";
+    document.getElementById("mainSub").style.display = "block";
+    document.getElementById("formContainer").style.display = "block";
+  } else {
+    note.textContent = "❌ Username atau password salah!";
+    note.style.color = "#ff6699";
+  }
+}
+
+    function generate() {
+      const type = document.getElementById('type').value.trim().toLowerCase();
+      const output = document.getElementById('output');
+
+      if (!type || !texts[type]) {
+        output.textContent = "Semua Kolom Wajib Di Isi!!!";
+        lastGeneratedMessage = '';
+        return;
+      }
+
+      const index = typeIndex[type] % texts[type].length;
+      const pesan = texts[type][index];
+      typeIndex[type]++;
+      lastGeneratedMessage = pesan;
+      output.textContent = pesan;
+    }
+
+    function copyText() {
+      if (!lastGeneratedMessage) return;
+
+      navigator.clipboard.writeText(lastGeneratedMessage).then(() => {
+        const output = document.getElementById('output');
+        const notif = document.createElement('div');
+        notif.className = 'copied';
+        notif.textContent = 'Disalin!';
+        output.appendChild(notif);
+
+        setTimeout(() => {
+          notif.remove();
+        }, 1500);
+      });
+    }
+  </script>
+</body>
+</html>
